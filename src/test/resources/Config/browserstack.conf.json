@@ -1,0 +1,17 @@
+{
+  "server": "hub-cloud.browserstack.com",
+
+  "capabilities": {
+    "project": "General Store App",
+    "build": "browserstack-build-1",
+    "name": "General Store Tests",
+    "browserstack.debug": true
+  },
+
+  "environments": [
+    {
+      "device": "Google Pixel 6",
+      "os_version": "12.0"
+    }
+  ]
+}

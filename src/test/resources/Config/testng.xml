@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <listeners>
+        <listener class-name="com.generalstoreapp.listeners.Listeners"></listener>
+        <listener class-name="com.generalstoreapp.reporter.ExtentReporterNG"></listener>
+    </listeners>
+
+    <test verbose="2" preserve-order="true" name="Fill Form Test" parallel="tests">
+        <parameter name="excelFilePath" value="/src/test/resources/TestData/FillFormTestData.xlsx"></parameter>
+        <parameter name="sheetName" value="Sheet1"></parameter>
+        <classes>
+            <class name="com.generalstoreapp.tests.FillFormTest"></class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Products Sum Test">
+        <parameter name="excelFilePath" value="/src/test/resources/TestData/ProductSumTestData.xlsx"></parameter>
+        <parameter name="sheetName" value="Sheet1"></parameter>
+        <classes>
+            <class name="com.generalstoreapp.tests.ProductsSumTest"></class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Add To Cart Test" >
+        <parameter name="excelFilePath" value="/src/test/resources/TestData/AddToCartTestData.xlsx"></parameter>
+        <parameter name="sheetName" value="Sheet1"></parameter>
+        <classes>
+            <class name="com.generalstoreapp.tests.AddToCartTest"></class>
+        </classes>
+    </test>
+
+</suite>
