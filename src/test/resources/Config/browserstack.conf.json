@@ -3,7 +3,7 @@
 
   "capabilities": {
     "project": "General Store App",
-    "build": "browserstack-build-1",
+    "build": "General Store Tests Build",
     "name": "General Store Tests",
     "browserstack.debug": true
   },

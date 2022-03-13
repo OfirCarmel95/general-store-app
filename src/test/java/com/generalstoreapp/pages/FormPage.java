@@ -6,15 +6,19 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FormPage {
 
     AndroidDriver<AndroidElement> driver;
+    WebDriverWait wait;
     Utilities u;
 
     public FormPage(AndroidDriver<AndroidElement> driver){
         this.driver = driver;
         this.u = new Utilities(driver);
+        this.wait = u.getWaitElement();
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
     @AndroidFindBy(id = "com.androidsample.generalstore:id/nameField")
@@ -32,7 +36,7 @@ public class FormPage {
 
     public void clickOnDropdown(){
         System.out.println("trying to get country dropdown");
-        countryDropdown.click();
+        wait.until(ExpectedConditions.elementToBeClickable(countryDropdown)).click();
     }
 
     public void selectCountry(String country){

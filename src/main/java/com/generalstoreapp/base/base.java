@@ -13,8 +13,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
@@ -25,7 +25,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class base {
     private static AppiumDriverLocalService service;
     private static AndroidDriver<AndroidElement> driver;
-    private static final SimpleDateFormat sdf3 = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss");
 
 
     public AppiumDriverLocalService startServer(){
@@ -58,13 +58,13 @@ public class base {
     }
     public static void startEmulator() throws IOException, InterruptedException {
         Runtime.getRuntime().exec(System.getProperty("user.dir") + "/src/main/resources/startEmulator.bat");
-        Thread.sleep(25000);
+        Thread.sleep(30000);
     }
 
     public static String getScreenshot(String testName) throws IOException {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String screenshotPath = System.getProperty("user.dir") + "/FailedTestsScreenshots/" + testName + "_" + sdf3.format(timestamp) + ".png";
+        Date date = new Date();
+        String screenshotPath = System.getProperty("user.dir") + "/FailedTestsScreenshots/" + testName + "_" + formatter.format(date) + ".png";
         FileUtils.copyFile(scrFile, new File(screenshotPath));
         return screenshotPath;
     }
